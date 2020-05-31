@@ -38,13 +38,13 @@
 
 \newcommand{\wss}[1]{\authornote{blue}{SS}{#1}}
 
-\title{Shoppers Drug Mart Calculator MIS}
+\title{Shoppers Drug Mart Calculator Spec}
 \author{Aditya Sharma}
 
 \begin {document}
 
 \maketitle
-This Module Interface Specification (MIS) document contains modules, types and
+Module Interface Specification (MIS) document contains modules, types and
 methods for implementing an online web application.
 
 The purpose of this software product is to calculate the total price of customer's
@@ -54,7 +54,273 @@ cart items as they shop along in Shoppers Drug Mart (SDM).
 \bibliography{SmithCollectedRefs}
 
 \newpage
+\section{Overview}
 
+
+\newpage
+\section{Domain}
+
+\subsection{Relevant Facts and Assumptions}
+
+\subsection{Purpose}
+\subsection{Stakeholders}
+\subsubsection{Intended Audience}
+The primary audience will be all SDM Customers.
+
+\subsubsection{Impacted Groups/ Individuals}
+The corporation known as Shoppers Drug Mart is a group that could be impacted by this application.
+The impact on the corporation is currently unknown; however, this conclusion was drawn because of the
+potential impact that this application could have on a SDM Customer. If the SDM Customer is impacted,
+it would only be logical for the impact to stretch onto the company serving the customer.
+
+
+\subsection{Product Scope}
+The purpose of this application would be to track the total price of the all items that a
+shopper would want to purchase from SDM. As a deliverable to the customer, the application will be 
+providing the customer with a editable cart with a total price.
+
+
+\newpage
+\section{Functional Requirements}
+\begin{itemize}
+  \item The application needs to be geared towards predominantly mobile use
+  \item The UI should be "card" based
+  \item All items should be immediately visible
+  \item The user should be able to add and delete items
+  \item The items should have names, descriptions, price, applied discounts
+  \item All the fields on the items should be editable
+  \item The user should be able to apply particular discounts to particular items
+  \item The user should be able to add as many items to their cart
+  \item THe total price of all the items should be displayed
+
+\end{itemize}
+
+\newpage
+\section*{Types Module}
+
+\subsection{Item}
+\begin{tabular}{| l | l | p{6cm} |}
+  \hline
+  \textbf{Property} & \textbf{Data Type}\\
+  \hline
+  itemName & string\\
+  \hline
+  itemDescription & string\\
+  \hline
+  itemInitialPrice & number\\
+  \hline
+  itemQuantity & number\\
+  \hline
+  itemDiscountType & string\\
+  \hline
+  itemDiscount & number\\
+  \hline
+  itemFinalPrice & number\\
+  \hline
+  deleteItem & boolean\\
+  \hline
+  \end{tabular}
+
+\subsection{CardState}
+\begin{tabular}{| l | l | p{6cm} |}
+  \hline
+  \textbf{Property} & \textbf{Data Type}\\
+  \hline
+  itemArray & Array$<$Item$>$\\
+  \hline
+  \end{tabular}
+
+
+
+
+
+
+
+\newpage
+\section*{ItemADT Module}
+
+\subsection{Module}
+ItemADT
+
+\bigskip
+\subsection{Uses}
+\subsubsection{Imported Constants}
+None
+
+\subsubsection{Imported Data Types}
+Item
+
+\subsubsection{Imported Access Programs}
+None
+
+\bigskip
+\subsection{Syntax}
+\subsubsection{Exported Constants}
+None
+
+\subsubsection{Exported Types}
+None
+ 
+\subsubsection{Exported Functions}
+None
+
+\subsubsection{Exported Classes}
+ItemADT
+
+\subsubsection{Access Routine Interface}
+\begin{tabular}{| l | l | l | p{5cm} |}
+  \hline
+  \textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+  \hline
+  constructor & Item (props) & ItemADT & ~\\
+  \hline
+  editItem & Item & ~ & ~\\
+  \hline 
+  deleteItem & Item & ~ & ~\\
+  \hline
+  \end{tabular}
+
+\bigskip
+\subsection{Semantics}
+\subsubsection{State Variables}
+item: Item
+
+\subsubsection{State Invariants}
+\begin{itemize}
+  \item All properties of $item$ must have a value except for $item.itemDescription$
+  \item All properties of $item$ must be editable/ changeable (must respond to user input)
+\end{itemize}
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+constructor(props):
+\begin{itemize}
+  \item transition: bind $this$ to each routine
+  \item output: $out :=$ self
+  \item exception: none
+\end{itemize}
+
+\noindent editItem():
+\begin{itemize}
+  \item transition: none
+  \item output: $out :=$ causes modal to pop-up
+  \item exception: none
+\end{itemize}
+
+\noindent deleteItem():
+\begin{itemize}
+  \item transition: delete item from itemArray
+  \item output: $out :=$ none
+  \item exception: none
+\end{itemize}
+
+
+
+
+
+
+
+
+\newpage
+\section*{Card Module}
+
+\subsection{Module}
+Card
+
+\bigskip
+\subsection{Uses}
+\subsubsection{Imported Constants}
+None
+
+\subsubsection{Imported Data Types}
+Item
+ItemArray
+
+\subsubsection{Imported Access Programs}
+ItemADT
+
+\bigskip
+\subsection{Syntax}
+\subsubsection{Exported Constants}
+None
+
+\subsubsection{Exported Types}
+None
+ 
+\subsubsection{Exported Functions}
+None
+
+\subsubsection{Exported Classes}
+None
+
+\subsubsection{Access Routine Interface}
+\begin{tabular}{| l | l | l | p{5cm} |}
+  \hline
+  \textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+  \hline
+  constructor & any & Card & ~\\
+  \hline
+  \end{tabular}
+
+\bigskip
+\subsection{Semantics}
+\subsubsection{State Variables}
+
+
+\subsubsection{State Invariants}
+\begin{itemize}
+  \item 
+\end{itemize}
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+None
+
+\subsubsection{}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
 \section* {Land Use Type Module}
 
 \subsection*{Module}
