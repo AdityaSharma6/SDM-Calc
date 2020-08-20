@@ -1,0 +1,10 @@
+{
+  "jsxBracketSameLine": true,
+  "arrowParens": "avoid",
+  "printWidth": 85,
+  "bracketSpacing": false,
+  "jsxSingleQuote": true,
+  "singleQuote": true,
+  "endOfLine": "auto",
+  "html.format.wrapAttributes": "force-aligned"
+}
