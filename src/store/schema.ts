@@ -5,11 +5,12 @@ export enum DiscountType {
 }
 
 export interface ItemADT {
+  key: number;
   id: number;
   name: string;
   description?: string;
   originalPrice: number;
-  discountedPrice?: number;
+  discountedPrice: number;
   discountValue: number;
   discountType: DiscountType;
   applicableForEmployeeDiscount: boolean;
